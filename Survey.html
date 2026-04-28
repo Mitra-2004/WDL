@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Survey Form</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(to right,#89f7fe,#66a6ff);
+}
+
+.container{
+width:600px;
+margin:40px auto;
+background:white;
+padding:20px;
+border-radius:8px;
+}
+
+h1{
+text-align:center;
+}
+
+input[type="text"]{
+width:100%;
+padding:8px;
+margin:5px 0 10px;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#4CAF50;
+color:white;
+border:none;
+}
+
+table{
+width:100%;
+margin-top:20px;
+border-collapse:collapse;
+}
+
+table,th,td{
+border:1px solid gray;
+padding:8px;
+text-align:center;
+}
+
+th{
+background:#f2f2f2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>User Survey Form</h1>
+
+<form onsubmit="addSurvey(event)">
+
+<label>Name</label>
+<input type="text" id="name" placeholder="Enter your name" required>
+
+<label>Age</label>
+<input type="text" id="age" placeholder="Enter your age" required>
+
+<br>
+
+<label>Gender</label><br>
+
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+<input type="radio" name="gender" value="Other"> Other
+
+<br><br>
+
+<label>Interests</label><br>
+
+<input type="checkbox" value="Technology" class="interest"> Technology
+<input type="checkbox" value="Sports" class="interest"> Sports
+<input type="checkbox" value="Music" class="interest"> Music
+<input type="checkbox" value="Travel" class="interest"> Travel
+
+<br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<h2>Survey Responses</h2>
+
+<table id="resultTable">
+
+<tr>
+<th>Name</th>
+<th>Age</th>
+<th>Gender</th>
+<th>Interests</th>
+</tr>
+
+</table>
+
+</div>
+
+<script>
+
+function addSurvey(e){
+
+e.preventDefault();
+
+var name=document.getElementById("name").value;
+var age=document.getElementById("age").value;
+
+var g=document.querySelector('input[name="gender"]:checked');
+var gender=g?g.value:"";
+
+var interestText="";
+document.querySelectorAll(".interest:checked").forEach(function(i){
+interestText+=i.value+" ";
+});
+
+var row=document.getElementById("resultTable").insertRow();
+
+row.insertCell(0).innerHTML=name;
+row.insertCell(1).innerHTML=age;
+row.insertCell(2).innerHTML=gender;
+row.insertCell(3).innerHTML=interestText;
+
+document.querySelector("form").reset();
+
+}
+
+</script>
+
+</body>
+
+</html>
