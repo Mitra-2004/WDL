@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Result Dashboard</title>
+
+<!-- Overall Page Theme (External Style Concept) -->
+<style>
+body{
+font-family:Arial;
+background:#eef2f7;
+margin:0;
+}
+
+.container{
+width:60%;
+margin:40px auto;
+background:white;
+padding:20px;
+border-radius:6px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+h1{
+color:#003366;
+margin-bottom:5px;
+}
+
+h2{
+color:#444;
+}
+</style>
+
+<!-- Internal CSS (Table Styling) -->
+<style>
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table,th,td{
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#003366;
+color:white;
+}
+
+tr:nth-child(even){
+background:#f9f9f9;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Student Result Dashboard</h1>
+<h2>Semester Performance</h2>
+
+<table>
+
+<tr>
+<th>Subject</th>
+<th>Marks</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>Web Development</td>
+<td style="background:#f7ff66;font-weight:bold;">95</td> <!-- Inline CSS -->
+<td>A+</td>
+</tr>
+
+<tr>
+<td>Database Management</td>
+<td>88</td>
+<td>A</td>
+</tr>
+
+<tr>
+<td>Operating Systems</td>
+<td>82</td>
+<td>A</td>
+</tr>
+
+<tr>
+<td>Computer Networks</td>
+<td>79</td>
+<td>B+</td>
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>
