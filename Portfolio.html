@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Student Portfolio</title>
+
+<style>
+
+/* basic page style */
+
+body{
+    font-family: Arial;
+    background: linear-gradient(to right,#7F7FD5,#86A8E7,#91EAE4);
+}
+
+/* main box */
+
+.container{
+    width:600px;
+    margin:auto;
+    margin-top:40px;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+}
+
+/* heading */
+
+h1{
+    text-align:center;
+}
+
+/* text inputs */
+
+input[type="text"]{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+/* submit button */
+
+button{
+    width:100%;
+    padding:10px;
+    background:#4CAF50;
+    color:white;
+    border:none;
+}
+
+/* table style */
+
+table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+}
+
+table,th,td{
+    border:1px solid gray;
+}
+
+th,td{
+    padding:8px;
+    text-align:center;
+}
+
+th{
+    background:#f2f2f2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Student Portfolio</h1>
+
+<form onsubmit="addData(event)">
+
+<label>Name</label>
+<input type="text" id="name" placeholder="Enter your name" required>
+
+<label>Course</label>
+<input type="text" id="course" placeholder="Enter your course" required>
+
+<br>
+
+<label>Gender</label><br>
+
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+<input type="radio" name="gender" value="Other"> Other
+
+<br><br>
+
+<label>Hobbies</label><br>
+
+<input type="checkbox" value="Reading" class="hobby"> Reading
+<input type="checkbox" value="Traveling" class="hobby"> Traveling
+<input type="checkbox" value="Sports" class="hobby"> Sports
+<input type="checkbox" value="Music" class="hobby"> Music
+
+<br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<h2>Submitted Entries</h2>
+
+<table id="resultTable">
+
+<tr>
+<th>Name</th>
+<th>Course</th>
+<th>Gender</th>
+<th>Hobbies</th>
+</tr>
+
+</table>
+
+</div>
+
+<script>
+
+function addData(event){
+
+event.preventDefault();   // stop page refresh
+
+var name = document.getElementById("name").value;
+var course = document.getElementById("course").value;
+
+/* get selected gender */
+
+var g = document.querySelector('input[name="gender"]:checked');
+var gender = g ? g.value : "";
+
+/* get hobbies */
+
+var hobbies = document.querySelectorAll(".hobby:checked");
+var hobbyText = "";
+
+hobbies.forEach(function(h){
+    hobbyText += h.value + " ";
+});
+
+/* insert row in table */
+
+var table = document.getElementById("resultTable");
+
+var row = table.insertRow();
+
+row.insertCell(0).innerHTML = name;
+row.insertCell(1).innerHTML = course;
+row.insertCell(2).innerHTML = gender;
+row.insertCell(3).innerHTML = hobbyText;
+
+/* clear form */
+
+document.querySelector("form").reset();
+
+}
+
+</script>
+
+</body>
+</html>
