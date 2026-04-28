@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamic DOM Content</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#eef2f7;
+margin:0;
+}
+
+.container{
+width:450px;
+margin:50px auto;
+background:white;
+padding:25px;
+border-radius:6px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+h2{
+color:#003366;
+}
+
+button{
+background:#003366;
+color:white;
+border:none;
+padding:10px 15px;
+margin-top:10px;
+cursor:pointer;
+border-radius:4px;
+}
+
+button:hover{
+background:#0055aa;
+}
+
+ul{
+text-align:left;
+margin-top:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>College Information Dashboard</h2>
+
+<p id="info">Click the button to load information.</p>
+
+<button onclick="showInfo()">Show Information</button>
+
+<h3>Available Courses</h3>
+
+<ul id="courseList">
+</ul>
+
+<button onclick="addCourse()">Load Courses</button>
+
+</div>
+
+<script>
+
+function showInfo(){
+
+document.getElementById("info").innerHTML=
+"I2IT College provides high quality education in Information Technology, Computer Engineering, and Artificial Intelligence.";
+
+}
+
+function addCourse(){
+
+var courses=["Information Technology","Computer Engineering","Artificial Intelligence"];
+
+var list=document.getElementById("courseList");
+
+list.innerHTML="";
+
+for(var i=0;i<courses.length;i++){
+
+var item=document.createElement("li");
+
+item.innerHTML=courses[i];
+
+list.appendChild(item);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
