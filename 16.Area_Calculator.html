@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Area Calculator</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#eef2f7;
+text-align:center;
+}
+
+.container{
+width:350px;
+margin:60px auto;
+background:white;
+padding:20px;
+border-radius:6px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input,select{
+width:100%;
+padding:8px;
+margin:6px 0;
+}
+
+button{
+background:#003366;
+color:white;
+border:none;
+padding:8px;
+width:100%;
+}
+
+h2{
+color:#003366;
+}
+
+</style>
+
+<script>
+
+function calculateArea(){
+
+var shape=document.getElementById("shape").value;
+var a=parseFloat(document.getElementById("value1").value);
+var b=parseFloat(document.getElementById("value2").value);
+
+var area;
+
+switch(shape){
+
+case "rectangle":
+area=a*b;
+break;
+
+case "triangle":
+area=0.5*a*b;
+break;
+
+case "circle":
+area=3.14*a*a;
+break;
+
+default:
+area="Invalid Shape";
+
+}
+
+document.getElementById("result").innerHTML="Area = "+area;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Area Calculator</h2>
+
+<select id="shape">
+<option value="rectangle">Rectangle</option>
+<option value="triangle">Triangle</option>
+<option value="circle">Circle</option>
+</select>
+
+<input type="number" id="value1" placeholder="Enter value 1">
+
+<input type="number" id="value2" placeholder="Enter value 2 (not needed for circle)">
+
+<button onclick="calculateArea()">Calculate Area</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+</body>
+</html>
