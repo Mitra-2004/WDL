@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Registration</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#eef2f7;
+margin:0;
+}
+
+/* header */
+
+header{
+background:#003366;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+/* form container */
+
+.container{
+width:400px;
+margin:40px auto;
+background:white;
+padding:25px;
+border-radius:6px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+/* labels */
+
+label{
+font-weight:bold;
+}
+
+/* inputs */
+
+input{
+width:100%;
+padding:8px;
+margin:6px 0 15px;
+border:1px solid #ccc;
+border-radius:4px;
+}
+
+/* radio buttons */
+
+.gender{
+width:auto;
+}
+
+/* button */
+
+button{
+width:100%;
+padding:10px;
+background:#003366;
+color:white;
+border:none;
+border-radius:4px;
+font-size:15px;
+}
+
+button:hover{
+background:#0055aa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>Student Registration Form</h2>
+</header>
+
+<div class="container">
+
+<form>
+
+<label>Name</label>
+<input type="text" placeholder="Enter your name" required>
+
+<label>Email</label>
+<input type="email" placeholder="Enter your email" required>
+
+<label>Gender</label><br>
+
+<input type="radio" name="gender" class="gender"> Male
+<input type="radio" name="gender" class="gender"> Female
+<input type="radio" name="gender" class="gender"> Other
+
+<br><br>
+
+<label>Date of Birth</label>
+<input type="date">
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
