@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Library Signup</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#eef2f7;
+}
+
+.container{
+width:350px;
+margin:40px auto;
+background:white;
+padding:20px;
+border:1px solid #ccc;
+}
+
+h2{
+text-align:center;
+}
+
+input{
+width:100%;
+padding:8px;
+margin:6px 0;
+}
+
+button{
+width:100%;
+padding:8px;
+background:#003366;
+color:white;
+border:none;
+}
+
+.error{
+color:red;
+font-size:14px;
+}
+
+</style>
+
+<script>
+
+function validateForm(){
+
+var name=document.getElementById("name").value;
+var email=document.getElementById("email").value;
+var mobile=document.getElementById("mobile").value;
+var password=document.getElementById("password").value;
+
+var emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+if(name=="" || email=="" || mobile=="" || password==""){
+alert("All fields must be filled");
+return false;
+}
+
+if(!email.match(emailPattern)){
+alert("Enter valid email");
+return false;
+}
+
+if(mobile.length!=10 || isNaN(mobile)){
+alert("Enter valid 10 digit mobile number");
+return false;
+}
+
+if(password.length<6){
+alert("Password must be at least 6 characters");
+return false;
+}
+
+alert("Signup Successful");
+return true;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Library Signup</h2>
+
+<form onsubmit="return validateForm()">
+
+Name
+<input type="text" id="name">
+
+Email
+<input type="text" id="email">
+
+Mobile Number
+<input type="text" id="mobile">
+
+Password
+<input type="password" id="password">
+
+<button type="submit">Signup</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
