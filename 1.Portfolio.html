@@ -1,73 +1,75 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <title>Student Portfolio</title>
 
 <style>
 
-/* basic page style */
-
 body{
-    font-family: Arial;
-    background: linear-gradient(to right,#7F7FD5,#86A8E7,#91EAE4);
+font-family:Arial;
+background:#eef2f7;
+margin:0;
 }
-
-/* main box */
 
 .container{
-    width:600px;
-    margin:auto;
-    margin-top:40px;
-    background:white;
-    padding:20px;
-    border-radius:8px;
+width:500px;
+margin:60px auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 12px rgba(0,0,0,0.15);
 }
 
-/* heading */
-
-h1{
-    text-align:center;
+h2{
+text-align:center;
+color:#003366;
 }
 
-/* text inputs */
+label{
+font-weight:bold;
+}
 
 input[type="text"]{
-    width:100%;
-    padding:8px;
-    margin-top:5px;
-    margin-bottom:10px;
+width:100%;
+padding:8px;
+margin:6px 0 15px;
+border:1px solid #ccc;
+border-radius:4px;
 }
 
-/* submit button */
+.options{
+margin-bottom:15px;
+}
 
 button{
-    width:100%;
-    padding:10px;
-    background:#4CAF50;
-    color:white;
-    border:none;
+width:100%;
+padding:10px;
+background:#003366;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
 }
 
-/* table style */
+button:hover{
+background:#0055aa;
+}
 
 table{
-    width:100%;
-    margin-top:20px;
-    border-collapse:collapse;
+width:100%;
+margin-top:20px;
+border-collapse:collapse;
 }
 
 table,th,td{
-    border:1px solid gray;
-}
-
-th,td{
-    padding:8px;
-    text-align:center;
+border:1px solid #ccc;
+padding:8px;
+text-align:center;
 }
 
 th{
-    background:#f2f2f2;
+background:#003366;
+color:white;
 }
 
 </style>
@@ -78,42 +80,45 @@ th{
 
 <div class="container">
 
-<h1>Student Portfolio</h1>
+<h2>Student Portfolio</h2>
 
 <form onsubmit="addData(event)">
 
 <label>Name</label>
-<input type="text" id="name" placeholder="Enter your name" required>
+<input type="text" id="name" required>
 
 <label>Course</label>
-<input type="text" id="course" placeholder="Enter your course" required>
 
-<br>
+<div class="options">
+<input type="radio" name="course" value="IT"> IT<br>
+<input type="radio" name="course" value="Computer"> Computer Engineering<br>
+<input type="radio" name="course" value="AI"> Artificial Intelligence
+</div>
 
-<label>Gender</label><br>
+<label>Gender</label>
 
-<input type="radio" name="gender" value="Male"> Male
-<input type="radio" name="gender" value="Female"> Female
-<input type="radio" name="gender" value="Other"> Other
+<div class="options">
+<input type="radio" name="gender" value="Male"> Male<br>
+<input type="radio" name="gender" value="Female"> Female<br>
+<input type="radio" name="gender" value="Others"> Others
+</div>
 
-<br><br>
+<label>Hobbies</label>
 
-<label>Hobbies</label><br>
-
-<input type="checkbox" value="Reading" class="hobby"> Reading
-<input type="checkbox" value="Traveling" class="hobby"> Traveling
-<input type="checkbox" value="Sports" class="hobby"> Sports
+<div class="options">
+<input type="checkbox" value="Reading" class="hobby"> Reading<br>
+<input type="checkbox" value="Traveling" class="hobby"> Traveling<br>
+<input type="checkbox" value="Sports" class="hobby"> Sports<br>
 <input type="checkbox" value="Music" class="hobby"> Music
-
-<br><br>
+</div>
 
 <button type="submit">Submit</button>
 
 </form>
 
-<h2>Submitted Entries</h2>
+<h3>Submitted Details</h3>
 
-<table id="resultTable">
+<table id="table">
 
 <tr>
 <th>Name</th>
@@ -128,39 +133,29 @@ th{
 
 <script>
 
-function addData(event){
+function addData(e){
 
-event.preventDefault();   // stop page refresh
+e.preventDefault();
 
-var name = document.getElementById("name").value;
-var course = document.getElementById("course").value;
+var name=document.getElementById("name").value;
 
-/* get selected gender */
+var c=document.querySelector('input[name="course"]:checked');
+var course=c?c.value:"";
 
-var g = document.querySelector('input[name="gender"]:checked');
-var gender = g ? g.value : "";
+var g=document.querySelector('input[name="gender"]:checked');
+var gender=g?g.value:"";
 
-/* get hobbies */
-
-var hobbies = document.querySelectorAll(".hobby:checked");
-var hobbyText = "";
-
-hobbies.forEach(function(h){
-    hobbyText += h.value + " ";
+var hobbies="";
+document.querySelectorAll(".hobby:checked").forEach(function(h){
+hobbies+=h.value+" ";
 });
 
-/* insert row in table */
+var row=document.getElementById("table").insertRow();
 
-var table = document.getElementById("resultTable");
-
-var row = table.insertRow();
-
-row.insertCell(0).innerHTML = name;
-row.insertCell(1).innerHTML = course;
-row.insertCell(2).innerHTML = gender;
-row.insertCell(3).innerHTML = hobbyText;
-
-/* clear form */
+row.insertCell(0).innerHTML=name;
+row.insertCell(1).innerHTML=course;
+row.insertCell(2).innerHTML=gender;
+row.insertCell(3).innerHTML=hobbies;
 
 document.querySelector("form").reset();
 
