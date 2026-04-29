@@ -1,56 +1,83 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Survey Form</title>
+<title>User Survey Form</title>
 
 <style>
 
 body{
 font-family:Arial;
-background:linear-gradient(to right,#89f7fe,#66a6ff);
+background:#eef2f7;
+margin:0;
 }
 
 .container{
-width:600px;
-margin:40px auto;
+width:520px;
+margin:60px auto;
 background:white;
-padding:20px;
-border-radius:8px;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 12px rgba(0,0,0,0.15);
 }
 
-h1{
+h2{
 text-align:center;
+color:#003366;
+margin-bottom:20px;
 }
 
-input[type="text"]{
+.form-group{
+margin-bottom:15px;
+}
+
+label{
+font-weight:bold;
+display:block;
+margin-bottom:5px;
+}
+
+input[type="text"],input[type="number"]{
 width:100%;
 padding:8px;
-margin:5px 0 10px;
+border:1px solid #ccc;
+border-radius:4px;
+}
+
+.options{
+margin-top:5px;
 }
 
 button{
 width:100%;
 padding:10px;
-background:#4CAF50;
+background:#003366;
 color:white;
 border:none;
+border-radius:5px;
+cursor:pointer;
+font-size:15px;
+margin-top:10px;
+}
+
+button:hover{
+background:#0055aa;
 }
 
 table{
 width:100%;
-margin-top:20px;
+margin-top:25px;
 border-collapse:collapse;
 }
 
 table,th,td{
-border:1px solid gray;
+border:1px solid #ccc;
 padding:8px;
 text-align:center;
 }
 
 th{
-background:#f2f2f2;
+background:#003366;
+color:white;
 }
 
 </style>
@@ -61,42 +88,50 @@ background:#f2f2f2;
 
 <div class="container">
 
-<h1>User Survey Form</h1>
+<h2>User Survey Form</h2>
 
-<form onsubmit="addSurvey(event)">
+<form onsubmit="addData(event)">
 
+<div class="form-group">
 <label>Name</label>
-<input type="text" id="name" placeholder="Enter your name" required>
+<input type="text" id="name" required>
+</div>
 
+<div class="form-group">
 <label>Age</label>
-<input type="text" id="age" placeholder="Enter your age" required>
+<input type="number" id="age" required>
+</div>
 
-<br>
+<div class="form-group">
+<label>Gender</label>
 
-<label>Gender</label><br>
-
-<input type="radio" name="gender" value="Male"> Male
-<input type="radio" name="gender" value="Female"> Female
+<div class="options">
+<input type="radio" name="gender" value="Male"> Male<br>
+<input type="radio" name="gender" value="Female"> Female<br>
 <input type="radio" name="gender" value="Other"> Other
+</div>
 
-<br><br>
+</div>
 
-<label>Interests</label><br>
+<div class="form-group">
+<label>Interests</label>
 
-<input type="checkbox" value="Technology" class="interest"> Technology
-<input type="checkbox" value="Sports" class="interest"> Sports
-<input type="checkbox" value="Music" class="interest"> Music
+<div class="options">
+<input type="checkbox" value="Technology" class="interest"> Technology<br>
+<input type="checkbox" value="Sports" class="interest"> Sports<br>
+<input type="checkbox" value="Music" class="interest"> Music<br>
 <input type="checkbox" value="Travel" class="interest"> Travel
+</div>
 
-<br><br>
+</div>
 
 <button type="submit">Submit</button>
 
 </form>
 
-<h2>Survey Responses</h2>
+<h3>Survey Responses</h3>
 
-<table id="resultTable">
+<table id="table">
 
 <tr>
 <th>Name</th>
@@ -111,7 +146,7 @@ background:#f2f2f2;
 
 <script>
 
-function addSurvey(e){
+function addData(e){
 
 e.preventDefault();
 
@@ -121,17 +156,17 @@ var age=document.getElementById("age").value;
 var g=document.querySelector('input[name="gender"]:checked');
 var gender=g?g.value:"";
 
-var interestText="";
+var interests="";
 document.querySelectorAll(".interest:checked").forEach(function(i){
-interestText+=i.value+" ";
+interests+=i.value+" ";
 });
 
-var row=document.getElementById("resultTable").insertRow();
+var row=document.getElementById("table").insertRow();
 
 row.insertCell(0).innerHTML=name;
 row.insertCell(1).innerHTML=age;
 row.insertCell(2).innerHTML=gender;
-row.insertCell(3).innerHTML=interestText;
+row.insertCell(3).innerHTML=interests;
 
 document.querySelector("form").reset();
 
@@ -140,5 +175,4 @@ document.querySelector("form").reset();
 </script>
 
 </body>
-
 </html>
